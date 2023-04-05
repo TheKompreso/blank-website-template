@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: *?selection=
+
+User-agent: Googlebot
+Disallow: *?selection=
+
+User-agent: Yandex
+Disallow: *?selection=
+
+Clean-param: action&act&ref&list&from&rev&hash&h
