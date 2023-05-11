@@ -1,6 +1,5 @@
 <?php
 	session_start();
-
 	mb_internal_encoding("UTF-8");
 
 	const SERVER_URL = 'site.exemple';
@@ -11,8 +10,10 @@
 	$action = explode('/',$matches[1]);										 // Разделяем это на массив начиная с $action[1] = list; $action[2] = page, $action[3] = 2
 	$action[0] = substr($matches[1], 1);								 	 // Записываем в 0 элемент общую картину	list/page/1
 	
-	preg_match('/([^.]*).'.SERVER_URL.'/',$_SERVER['SERVER_NAME'],$matches); // Определяем субдомен
-	$subdomain = $matches[1]; 												 // Определяем субдомен
+	// Определяем субдомен
+	preg_match('/([^.]*).'.SERVER_URL.'/',$_SERVER['SERVER_NAME'],$matches);
+	if(isset($matches[1])) $subdomain = $matches[1];
+	else $subdomain = '';
 	
 	define('PUBLIC_DIR', dirname(__FILE__) . '/public/');				 	 // Движок сайта
 	define('ENGINE_DIR', dirname(__FILE__) . '/system/');				 	 // Движок сайта
